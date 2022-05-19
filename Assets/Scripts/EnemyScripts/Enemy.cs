@@ -5,27 +5,40 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private Rigidbody enemyRb;
-
-    [SerializeField] private float speed;
    
     private GameObject player;
+
+    [SerializeField] private float ForcePower = 5.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Find the rigid body of the enemy as well as the player/target
-        enemyRb = GetComponent<Rigidbody>();
-        player = GameObject.Find("Player");
+        FindRbAndPlayer();
     }
 
     // Update is called once per frame
     void Update()
     {
-        FollowPlayer();
+        FollowPlayer(7.5f);
     }
-    public void FollowPlayer()
+    public void FollowPlayer(float speed)
     {
         Vector3 lookDirection = (player.transform.position - transform.position).normalized;
         transform.Translate(lookDirection * speed * Time.deltaTime);
     }
+    // Find the rigid body of the enemy as well as the player/target
+    public void FindRbAndPlayer()
+    {
+        enemyRb = GetComponent<Rigidbody>();
+        player = GameObject.Find("Player");
+    }
+    // Push enemies away from the player
+  /*  public void OnCollisionEnter(Collision other)
+    {
+        Vector3 awayFromPlayer = (transform.position - player.transform.position).normalized;
+        if (gameObject.CompareTag("Player"))
+        {
+            enemyRb.AddForce(awayFromPlayer * ForcePower * Time.deltaTime, ForceMode.Impulse);
+        }
+    } */
 }

@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{1B77376B-596A-D69A-3148-BE99E59C2376}</ProjectGuid>
+    <ProjectGuid>{E293E0F5-9459-5FB0-82F6-67492481C7B6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -59,11 +59,12 @@
     <Compile Include="Assets\Scripts\MoveForward.cs" />
     <Compile Include="Assets\Scripts\ProjectileDetection.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\FollowMouse.cs" />
+    <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\ShootProjectile.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\SlowEnemy.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\Enemy.cs" />
-    <Compile Include="Assets\Scripts\SpawnManager.cs" />
-    <Compile Include="Assets\Scripts\EnemyScripts\SlowEnemy.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\FastEnemy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -59,5 +59,9 @@ public class PlayerControl : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, zBoundry);
         }
     }
-    
+    public void OnTriggerEnter(Collider other)
+    {
+        lifeCount -= 1;
+    }
+
 }
