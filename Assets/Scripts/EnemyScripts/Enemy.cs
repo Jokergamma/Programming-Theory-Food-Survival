@@ -8,8 +8,6 @@ public class Enemy : MonoBehaviour
    
     private GameObject player;
 
-    [SerializeField] private float ForcePower = 5.0f;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -32,13 +30,4 @@ public class Enemy : MonoBehaviour
         enemyRb = GetComponent<Rigidbody>();
         player = GameObject.Find("Player");
     }
-    // Push enemies away from the player
-  /*  public void OnCollisionEnter(Collision other)
-    {
-        Vector3 awayFromPlayer = (transform.position - player.transform.position).normalized;
-        if (gameObject.CompareTag("Player"))
-        {
-            enemyRb.AddForce(awayFromPlayer * ForcePower * Time.deltaTime, ForceMode.Impulse);
-        }
-    } */
 }

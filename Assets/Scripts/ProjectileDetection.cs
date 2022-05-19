@@ -17,7 +17,7 @@ public class ProjectileDetection : MonoBehaviour
     {
         DestoryOutOfBounds();
     }
-    // Destroy projectile and enemy once they collide (IN PROGRESS! BUGGED WAHHHHHHHH!)
+    // Destroy projectile and enemy once they collide 
     private void OnCollisionEnter(Collision other)
     {
         if(!gameObject.CompareTag("Player"))

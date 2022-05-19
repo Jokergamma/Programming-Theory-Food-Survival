@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -11,8 +14,13 @@ public class PlayerControl : MonoBehaviour
     private float horizontalInput;
     private float forwardInput;
 
+    [SerializeField] private float forcePower = 5.0f;
+
+    [SerializeField] private TextMeshProUGUI lifeCountText;
+    [SerializeField] private TextMeshProUGUI gameoverText;
+    [SerializeField] private Button playAgainButton;
     [SerializeField] private int lifeCount;
-    [SerializeField] private bool isAlive;
+    public bool isAlive;
 
     private float zBoundry = 12.0f;
     private float xBoundry = 35.0f;
@@ -21,14 +29,20 @@ public class PlayerControl : MonoBehaviour
     {
         isAlive = true;
         lifeCount = 3;
+        lifeCountText.text = "Health: " + lifeCount;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Allow movement when player is alive
         if(isAlive == true)
         {
             Movement();
+        }
+        else if(isAlive == false)
+        {
+            GameOver();
         }
     }
     // Allow the player to move using WASD
@@ -61,7 +75,27 @@ public class PlayerControl : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        lifeCount -= 1;
+        lifeCount = lifeCount - 1;
+        lifeCountText.text = "Health: " + lifeCount;
+        if(lifeCount == 0)
+        {
+            isAlive = false;
+        }
     }
+    // Push enemies away from the player
+    private void OnCollisionEnter(Collision other) // IN PROCESS
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Rigidbody enemyRigidbody = other.gameObject.GetComponent<Rigidbody>();
+            Vector3 awayFromPlayer = other.gameObject.transform.position - transform.position;
 
+            enemyRigidbody.AddForce(awayFromPlayer * forcePower, ForceMode.Impulse);
+        }
+    }
+    private void GameOver()
+    {
+        gameoverText.gameObject.SetActive(true);
+        playAgainButton.gameObject.SetActive(true);
+    }
 }

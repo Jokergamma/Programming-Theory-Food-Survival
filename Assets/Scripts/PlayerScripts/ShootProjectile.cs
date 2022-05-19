@@ -6,18 +6,29 @@ public class ShootProjectile : MonoBehaviour
 {
     public GameObject projectilePrefab;
 
-    private float offset = 0.01f; 
-
+    public GameObject playerControlObject;
+    private PlayerControl v_playerControl;
+   
     public float timer;
     private float timeLimit = 0.35f;
+    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        v_playerControl = playerControlObject.GetComponent<PlayerControl>();
     }
 
     // Update is called once per frame
     void Update()
+    {
+        // Allow player to shoot if alive
+        if(v_playerControl.isAlive == true)
+        {
+            FireProjectile();
+        }
+    }
+    void FireProjectile()
     {
         // Start the timer for the attack interval
         timer += Time.deltaTime;

@@ -59,12 +59,12 @@
     <Compile Include="Assets\Scripts\MoveForward.cs" />
     <Compile Include="Assets\Scripts\ProjectileDetection.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\FollowMouse.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\FastEnemy.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\ShootProjectile.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\SlowEnemy.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\Enemy.cs" />
-    <Compile Include="Assets\Scripts\EnemyScripts\FastEnemy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
