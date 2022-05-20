@@ -7,12 +7,12 @@ using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] private float speed = 11;
 
-    public GameObject projectilePrefab;
+    [SerializeField] private GameObject projectilePrefab;
 
-    private float horizontalInput;
-    private float forwardInput;
+   [SerializeField] private float horizontalInput;
+   [SerializeField] private float forwardInput;
 
     [SerializeField] private float forcePower = 5.0f;
 
@@ -22,14 +22,12 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private int lifeCount;
     public bool isAlive;
 
-    private float zBoundry = 12.0f;
-    private float xBoundry = 35.0f;
+    private float zBoundry = 11.2f;
+    private float xBoundry = 32.3f;
     // Start is called before the first frame update
     void Start()
     {
-        isAlive = true;
-        lifeCount = 3;
-        lifeCountText.text = "Health: " + lifeCount;
+        StartingPlayerStats();
     }
 
     // Update is called once per frame
@@ -97,5 +95,11 @@ public class PlayerControl : MonoBehaviour
     {
         gameoverText.gameObject.SetActive(true);
         playAgainButton.gameObject.SetActive(true);
+    }
+    private void StartingPlayerStats()
+    {
+        isAlive = true;
+        lifeCount = 3;
+        lifeCountText.text = "Health: " + lifeCount;
     }
 }

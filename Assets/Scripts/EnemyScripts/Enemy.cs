@@ -5,7 +5,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private Rigidbody enemyRb;
-   
+
+    private float zBoundry = 11.2f;
+    private float xBoundry = 32.3f;
+
     private GameObject player;
 
     // Start is called before the first frame update
@@ -18,6 +21,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         FollowPlayer(7.5f);
+        RestrictEnemyMovement();
     }
     public void FollowPlayer(float speed)
     {
@@ -30,4 +34,27 @@ public class Enemy : MonoBehaviour
         enemyRb = GetComponent<Rigidbody>();
         player = GameObject.Find("Player");
     }
+    // Restrict Enemy Movement
+    public void RestrictEnemyMovement()
+    {
+        if (transform.position.x < -xBoundry)
+        {
+            transform.position = new Vector3(-xBoundry, transform.position.y, transform.position.z);
+        }
+        if (transform.position.x > xBoundry)
+        {
+            transform.position = new Vector3(xBoundry, transform.position.y, transform.position.z);
+        }
+
+        if (transform.position.z < -zBoundry)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -zBoundry);
+        }
+
+        if (transform.position.z > zBoundry)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, zBoundry);
+        }
+    }
 }
+

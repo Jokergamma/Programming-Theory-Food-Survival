@@ -14,5 +14,6 @@ public class SlowEnemy : Enemy
     void Update()
     {
         FollowPlayer(5.0f);
+        RestrictEnemyMovement();
     }
 }
